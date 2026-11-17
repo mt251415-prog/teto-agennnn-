@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>테토 vs 에겐 성향 진단 테스트 | 내 본능 에너지는?</title>
+  
+  <!-- Open Graph / Meta -->
+  <meta name="description" content="1분 만에 알아보는 테토(Teto) vs 에겐(Egen) 성향 테스트! 테토남, 에겐남, 테토녀, 에겐녀 중 나의 진짜 모습은?">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="🔥 테토 vs 에겐 성향 진단 테스트">
+  <meta property="og:description" content="나는 불도저 직진 테토일까, 섬세한 공감 에겐일까? 나의 숨겨진 본능 에너지와 천생연분 궁합 확인하기!">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&auto=format&fit=crop&q=80">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- External Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 전체 컨테이너 (모바일 뷰 최적화) -->
+  <main id="app-container">
+
+    <!-- ================= 1. INTRO SCREEN ================= -->
+    <section id="screen-intro" class="screen active p-6 justify-between">
+      <div class="flex-1 flex flex-col justify-center items-center text-center my-auto">
+        <!-- 뱃지 & 참여자 수 -->
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold mb-4">
+          <span class="animate-pulse">🔥</span> 누적 148,290명 참여
+        </div>
+
+        <!-- 메인 타이틀 -->
+        <h1 class="text-3xl font-extrabold tracking-tight mb-2">
+          <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-rose-400 bg-clip-text text-transparent">
+            테토 vs 에겐
+          </span>
+          <br>
+          <span class="text-white text-2xl font-bold">성향 진단 테스트</span>
+        </h1>
+        
+        <p class="text-slate-400 text-sm max-w-xs mt-2 leading-relaxed">
+          내 안에 잠재된 진짜 본능 에너지는?<br>
+          <strong class="text-blue-300 font-medium">테토(추진·직진)</strong>와 <strong class="text-rose-300 font-medium">에겐(공감·섬세)</strong> 중<br>
+          어느 쪽에 더 가까운지 1분 만에 알아보세요!
+        </p>
+
+        <!-- 비주얼 비교 배너 카드 -->
+        <div class="w-full grid grid-cols-2 gap-3 my-8">
+          <!-- 테토 카드 -->
+          <div class="bg-gradient-to-br from-blue-950/40 to-slate-900 border border-blue-500/30 rounded-2xl p-4 text-center">
+            <div class="text-4xl mb-2">🐺</div>
+            <div class="text-blue-400 font-bold text-sm">테토 (TETO)</div>
+            <div class="text-[11px] text-slate-400 mt-1">#결단력 #불도저<br>#직진본능 #해결사</div>
+          </div>
+          <!-- 에겐 카드 -->
+          <div class="bg-gradient-to-br from-rose-950/40 to-slate-900 border border-rose-500/30 rounded-2xl p-4 text-center">
+            <div class="text-4xl mb-2">🐰</div>
+            <div class="text-rose-400 font-bold text-sm">에겐 (EGEN)</div>
+            <div class="text-[11px] text-slate-400 mt-1">#공감대장 #다정함<br>#눈치백단 #힐러</div>
+          </div>
+        </div>
+
+        <p class="text-[12px] text-slate-500 leading-normal">
+          ※ 실제 생물학적 호르몬 수치가 아닌 심리적 행동 양식과 소통 스타일을 측정하는 테스트입니다.
+        </p>
+      </div>
+
+      <!-- 하단 시작 버튼 -->
+      <div class="w-full pt-4 pb-2">
+        <button onclick="startTest()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-rose-600 text-white font-bold text-base shadow-lg shadow-indigo-500/30 hover:opacity-95 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+          <span>테스트 시작하기</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ================= 2. GENDER SELECT SCREEN ================= -->
+    <section id="screen-gender" class="screen p-6 justify-between">
+      <div class="pt-6">
+        <span class="text-xs font-semibold tracking-wider text-indigo-400 uppercase">STEP 1</span>
+        <h2 class="text-2xl font-bold text-white mt-1">당신의 성별을 선택해주세요</h2>
+        <p class="text-slate-400 text-xs mt-1">성별에 따라 맞춤형 결과 유형(테토남/에겐남/테토녀/에겐녀)이 정밀하게 도출됩니다.</p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 my-auto">
+        <!-- 남성 선택 버튼 -->
+        <button onclick="selectGender('MALE')" class="option-btn group p-6 rounded-2xl bg-slate-900/90 border border-slate-700/80 hover:border-blue-500 text-left flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <span class="text-4xl p-2 rounded-xl bg-blue-500/10 border border-blue-500/20">👦</span>
+            <div>
+              <div class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">남성 (Male)</div>
+              <div class="text-xs text-slate-400 mt-0.5">테토남 or 에겐남으로 진단</div>
+            </div>
+          </div>
+          <svg class="w-5 h-5 text-slate-500 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+
+        <!-- 여성 선택 버튼 -->
+        <button onclick="selectGender('FEMALE')" class="option-btn group p-6 rounded-2xl bg-slate-900/90 border border-slate-700/80 hover:border-rose-500 text-left flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <span class="text-4xl p-2 rounded-xl bg-rose-500/10 border border-rose-500/20">👧</span>
+            <div>
+              <div class="text-lg font-bold text-white group-hover:text-rose-400 transition-colors">여성 (Female)</div>
+              <div class="text-xs text-slate-400 mt-0.5">테토녀 or 에겐녀로 진단</div>
+            </div>
+          </div>
+          <svg class="w-5 h-5 text-slate-500 group-hover:text-rose-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <div class="pb-4 text-center">
+        <button onclick="showScreen('intro')" class="text-xs text-slate-500 hover:text-slate-400 underline">
+          처음 화면으로 돌아가기
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ================= 3. QUESTION SCREEN ================= -->
+    <section id="screen-question" class="screen p-6 justify-between">
+      <!-- 상단 진행 바 -->
+      <div>
+        <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
+          <span id="q-category" class="px-2 py-0.5 rounded bg-slate-800 text-indigo-300 font-semibold text-[11px]">카테고리</span>
+          <span id="q-counter" class="font-bold text-white">1 / 12</span>
+        </div>
+        <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+          <div id="q-progress-bar" class="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-rose-500 transition-all duration-300 rounded-full" style="width: 8%;"></div>
+        </div>
+      </div>
+
+      <!-- 질문 본문 -->
+      <div class="my-auto py-6">
+        <h2 id="q-title" class="text-lg font-bold text-white text-center leading-relaxed">
+          질문 내용이 여기에 들어갑니다.
+        </h2>
+      </div>
+
+      <!-- 선택지 2개 (A / B) -->
+      <div class="space-y-3.5 pb-4">
+        <button id="option-a-btn" class="option-btn w-full p-4 rounded-2xl bg-slate-900/90 border border-slate-700/80 text-left cursor-pointer hover:bg-slate-800/80">
+          <!-- A 옵션 동적 삽입 -->
+        </button>
+
+        <button id="option-b-btn" class="option-btn w-full p-4 rounded-2xl bg-slate-900/90 border border-slate-700/80 text-left cursor-pointer hover:bg-slate-800/80">
+          <!-- B 옵션 동적 삽입 -->
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ================= 4. LOADING SCREEN ================= -->
+    <section id="screen-loading" class="screen p-6 justify-center items-center text-center">
+      <div class="loading-avatar text-6xl mb-6">
+        🧬
+      </div>
+      <h3 class="text-xl font-bold text-white mb-2">본능 에너지 성향 분석 중</h3>
+      <p id="loading-subtext" class="text-sm text-slate-400 transition-all duration-300">
+        당신의 응답 패턴을 분석하고 있습니다...
+      </p>
+      <div class="mt-8 flex justify-center gap-1.5">
+        <div class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-bounce" style="animation-delay: 0s;"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-bounce" style="animation-delay: 0.15s;"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-bounce" style="animation-delay: 0.3s;"></div>
+      </div>
+    </section>
+
+
+    <!-- ================= 5. RESULT SCREEN ================= -->
+    <section id="screen-result" class="screen p-6 pb-12">
+      
+      <!-- 캡처 및 화면 표시용 카드 -->
+      <div id="result-card-capture" class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl relative overflow-hidden">
+        
+        <!-- 상단 헤더 & 배지 -->
+        <div class="text-center">
+          <span id="res-badge" class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 mb-2">
+            배지
+          </span>
+          <div id="res-emoji" class="text-6xl my-2">🐺</div>
+          <div class="text-xs uppercase tracking-widest text-slate-400 font-semibold mt-1">MY ENERGY TYPE</div>
+          <h2 id="res-title" class="text-3xl font-black text-white mt-1">테토남</h2>
+          <p id="res-subtitle" class="text-indigo-400 font-semibold text-sm mt-0.5">결단력 200% 불도저 늑대형</p>
+        </div>
+
+        <!-- 성향 비율 게이지 (TETO vs EGEN) -->
+        <div class="my-6 p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+          <div class="flex justify-between items-center text-xs font-bold mb-2">
+            <span class="text-blue-400 flex items-center gap-1">
+              <span>🐺 테토(Teto)</span>
+              <span id="gauge-teto-num" class="text-sm">75%</span>
+            </span>
+            <span class="text-rose-400 flex items-center gap-1">
+              <span id="gauge-egen-num" class="text-sm">25%</span>
+              <span>에겐(Egen) 🐰</span>
+            </span>
+          </div>
+
+          <!-- 게이지 바 -->
+          <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden flex">
+            <div id="gauge-teto-bar" class="gauge-fill h-full bg-gradient-to-r from-blue-600 to-indigo-500" style="width: 50%;"></div>
+            <div id="gauge-egen-bar" class="gauge-fill h-full bg-gradient-to-r from-indigo-500 to-rose-500" style="width: 50%;"></div>
+          </div>
+        </div>
+
+        <!-- 해시태그 목록 -->
+        <div id="res-tags" class="flex flex-wrap justify-center gap-1.5 mb-5">
+          <!-- 동적 태그 삽입 -->
+        </div>
+
+        <!-- 한 줄 요약 박스 -->
+        <div class="p-3.5 rounded-xl bg-slate-800/50 border border-slate-700/60 text-center mb-5">
+          <p id="res-summary" class="text-xs text-slate-200 font-medium leading-relaxed">
+            한 줄 요약이 들어갑니다.
+          </p>
+        </div>
+
+        <!-- 상세 특징 불릿 -->
+        <div class="mb-5">
+          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
+            <span>✨ 대표적인 성향 특징</span>
+          </h4>
+          <ul id="res-descriptions" class="space-y-2">
+            <!-- 동적 불릿 삽입 -->
+          </ul>
+        </div>
+
+        <!-- 연애 스타일 -->
+        <div class="mb-5 p-4 rounded-2xl bg-gradient-to-br from-indigo-950/30 to-purple-950/30 border border-indigo-500/20">
+          <div class="text-xs font-bold text-indigo-300 mb-1 flex items-center gap-1">
+            <span>💘 연애 & 플러팅 모드</span>
+          </div>
+          <div id="res-love-quote" class="text-sm font-bold text-white mb-1">“...”</div>
+          <p id="res-love-desc" class="text-xs text-slate-300 leading-relaxed">연애 설명</p>
+        </div>
+
+        <!-- 궁합 케미 섹션 -->
+        <div class="pt-2 border-t border-slate-800">
+          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 text-center">
+            성향 궁합 매칭
+          </h4>
+          <div class="grid grid-cols-2 gap-2.5">
+            <!-- 환상의 짝꿍 -->
+            <div class="p-3 rounded-xl bg-blue-950/20 border border-blue-500/20 text-center">
+              <span class="text-[10px] font-bold text-blue-400 px-1.5 py-0.5 rounded bg-blue-500/10">환상의 짝꿍</span>
+              <div id="match-good-emoji" class="text-2xl mt-1.5 mb-1">🐰</div>
+              <div id="match-good-name" class="text-xs font-bold text-white">에겐녀</div>
+              <div id="match-good-relation" class="text-[10px] text-blue-300 mt-0.5 font-medium">천생연분</div>
+              <div id="match-good-desc" class="text-[10px] text-slate-400 mt-1 line-clamp-2">설명</div>
+            </div>
+
+            <!-- 주의할 짝꿍 -->
+            <div class="p-3 rounded-xl bg-rose-950/20 border border-rose-500/20 text-center">
+              <span class="text-[10px] font-bold text-rose-400 px-1.5 py-0.5 rounded bg-rose-500/10">주의할 짝꿍</span>
+              <div id="match-bad-emoji" class="text-2xl mt-1.5 mb-1">🐆</div>
+              <div id="match-bad-name" class="text-xs font-bold text-white">극테토녀</div>
+              <div id="match-bad-relation" class="text-[10px] text-rose-300 mt-0.5 font-medium">기싸움 주의</div>
+              <div id="match-bad-desc" class="text-[10px] text-slate-400 mt-1 line-clamp-2">설명</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /result-card-capture -->
+
+      <!-- 공유 및 버튼 영역 -->
+      <div class="mt-6 space-y-2.5">
+        <!-- 결과 카드 이미지 저장 -->
+        <button onclick="downloadResultCard()" class="w-full py-3.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
+          <span>📸 결과 카드 이미지 저장 (인스타 스토리용)</span>
+        </button>
+
+        <!-- 카카오톡 공유 -->
+        <button onclick="shareKakao()" class="w-full py-3 px-4 rounded-xl bg-[#FEE500] hover:bg-[#FDD835] text-[#3c1e1e] font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
+          <span>💬 카카오톡으로 결과 공유하기</span>
+        </button>
+
+        <!-- 링크 복사 -->
+        <button onclick="copyResultLink()" class="w-full py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-sm border border-slate-700 transition-all flex items-center justify-center gap-2">
+          <span>🔗 테스트 링크 복사하기</span>
+        </button>
+
+        <!-- 다시 하기 -->
+        <button onclick="startTest()" class="w-full py-2.5 px-4 rounded-xl text-slate-400 hover:text-white font-medium text-xs transition-all">
+          🔄 테스트 다시 하기
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- 토스트 알림 컴포넌트 -->
+  <div id="toast">알림 메시지</div>
+
+  <!-- 스크립트 연결 -->
+  <script src="js/questions.js"></script>
+  <script src="js/results.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
